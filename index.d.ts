@@ -1,4 +1,3 @@
-import { RankingEventPoint } from './index.d';
 export type App = {
   version: string
   updateTime: Date
@@ -11,12 +10,30 @@ export type Res = {
   indexName: string
 }
 
-export interface VersionLatest {
+type Version = {
   app: App
   res: Res
 }
 
-export interface VersionApp extends App {}
+export interface VersionLatest extends Version{}
+
+type AppsPassPramas = {
+  version?: string
+}
+
+/**
+ * パスパラメータがない場合は配列で返す
+ */
+export type VersionApps<T> = T extends AppsPassPramas ? App : App[]
+
+type AssetsPassPramas = {
+  version?: number
+}
+
+/**
+ * パスパラメータがない場合は配列で返す
+ */
+export type VersionAssets<T> = T extends AssetsPassPramas ? Res : Res[]
 
 export type Costume = {
   id: number
@@ -151,3 +168,68 @@ export type RankingIdolPointLogs = {
   data: RankingIdolPointLogData[]
 }[]
 
+export interface Lounges {
+  id: string
+  viewerId: string
+  name: string
+  comment: string
+  userCount: number
+  userCountLimit: number
+  fan: number
+  masterName: string
+  createTime: Date
+  updateTime: Date
+}
+
+export type LoungeEventHistory = {
+  eventId: number
+  eventName: string
+  summaryTime: Date
+  rank: number
+  score: number
+}[]
+
+export interface LoungeSearch {
+  id: string
+  viewerId: string
+  name: string
+  updateTime: Date
+}
+
+export type ElectionSchedule = {
+  beginDate: Date
+  endDate: Date
+  pageBeginDate: Date
+  pageEndDate: Date
+  resultOpenDate: Date
+}
+
+export type Dramas = {
+  id: number
+  name: string
+  roles: {
+    id: number
+    name: string
+  }[]
+}
+
+export interface Election {
+  id: number
+  name: string
+  schedule: ElectionSchedule
+  dramas: Dramas[]
+}
+
+export type ElectionCurrentData = {
+  idol_id: number
+  idol_name: string
+  score: number
+  rank: number
+}
+
+export type ElectionCurrent = {
+  id: number
+  name: string
+  summaryTime: Date
+  data: ElectionCurrentData[]
+}[]
