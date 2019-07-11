@@ -10,14 +10,14 @@ export type Res = {
   indexName: string
 }
 
-type Version = {
+export type Version = {
   app: App
   res: Res
 }
 
 export interface VersionLatest extends Version{}
 
-type AppsPassPramas = {
+export type AppsPassPramas = {
   version?: string
 }
 
@@ -26,7 +26,7 @@ type AppsPassPramas = {
  */
 export type VersionApps<T> = T extends AppsPassPramas ? App : App[]
 
-type AssetsPassPramas = {
+export type AssetsPassPramas = {
   version?: number
 }
 
