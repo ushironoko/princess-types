@@ -1,3 +1,4 @@
+import { RankingEventPoint } from './index.d';
 export type App = {
   version: string
   updateTime: Date
@@ -15,7 +16,7 @@ export interface VersionLatest {
   res: Res
 }
 
-export type VersionApp = App
+export interface VersionApp extends App {}
 
 export type Costume = {
   id: number
@@ -39,7 +40,7 @@ export type CenterEffect = {
   id: number
   description: string
   idolType: number
-  specificIdolType: number
+  specificIdolType?: number
   attribute: number
   value: number
 }
@@ -52,10 +53,10 @@ export type Skill = {
   duration: number
   interval: number
   probability: number
-  value: number
+  value: number[]
 }
 
-export interface Card {
+export interface Cards {
   id: number
   name: string
   sortedId: number
@@ -63,10 +64,10 @@ export interface Card {
   idolType: number
   resourceId: string
   rarity: number
-  eventId?: number | null
+  eventId?: number
   extraType: number
-  costume?: Costume | null
-  bonusCostume?: BonusCostume | null
+  costume?: Costume
+  bonusCostume?: BonusCostume
   flavorText: string
   flavorTextAwakened: string
   levelMax: number
@@ -87,9 +88,66 @@ export interface Card {
   visualMaxAwakened: number
   visualMasterBonus: number
   life: number
-  centerEffect?: CenterEffect | null
+  centerEffect?: CenterEffect
   centerEffectName: string
-  skill: Skill
+  skill?: Skill[]
   skillName: string
-  addDate: Date
+  addDate?: Date
 }
+
+export type Schedule = {
+  beginDate: Date
+  endDate: Date
+  pageBeginDate: Date
+  pageEndDate: Date
+  boostBeginDate?: Date
+  boostEndDate?: Date
+}
+
+export interface Events {
+  id: number
+  type: number
+  appealType?: number
+  schedule: Schedule
+  name?: string
+}
+
+export type IdolPoint = {
+  idolId: number
+  borders: number
+}
+
+export interface Rankings {
+  eventPoint: number[]
+  highScore: number[]
+  loungePoint: number[]
+  idolPoint?: IdolPoint[]
+}
+
+export type RankingEventPoint = {
+  summaryTime: Date
+  updateTime: Date
+  count: number
+}[]
+
+export type RankingEventPointLogData = {
+  score: number
+  summaryType: Date
+}
+
+export type RankingEventPointLogs = {
+  rank: number
+  data: RankingEventPointLogData[]
+}[]
+
+
+export type RankingIdolPointLogData = {
+  score: number
+  summaryType: Date
+}
+
+export type RankingIdolPointLogs = {
+  rank: number
+  data: RankingIdolPointLogData[]
+}[]
+
