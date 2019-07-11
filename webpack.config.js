@@ -10,7 +10,7 @@ module.exports = {
           {
             loader: 'ts-loader',
             options: {
-              transpileOnly: true // 型チェックしない！！！
+              transpileOnly: true
             }
           }
         ]
