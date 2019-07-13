@@ -73,7 +73,7 @@ export type Skill = {
   value: number[]
 }
 
-export interface Cards {
+export type Cards = {
   id: number
   name: string
   sortedId: number
@@ -110,7 +110,7 @@ export interface Cards {
   skill?: Skill[]
   skillName: string
   addDate?: Date
-}
+}[]
 
 export type Schedule = {
   beginDate: Date
