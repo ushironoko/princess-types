@@ -121,13 +121,22 @@ export type Schedule = {
   boostEndDate?: Date
 }
 
-export interface Events {
+export type EventPassParams = {
+  id: number
+}
+
+export interface Event {
   id: number
   type: number
   appealType?: number
   schedule: Schedule
   name?: string
 }
+
+/**
+ * パスパラメータがない場合は配列で返す
+ */
+export type Events<T> = T extends EventPassParams ? Event : Event[]
 
 export type IdolPoint = {
   idolId: number
