@@ -58,17 +58,17 @@ declare namespace princess {
   export type CenterEffect = {
     id: number
     description: string
-    idolType: number
-    specificIdolType?: number
-    attribute: number
+    idolType: 1 | 2 | 3 | 4
+    specificIdolType?: 1 | 2 | 3 | 4
+    attribute: 1 | 2 | 3 | 4 | 5 | 6
     value: number
   }
 
   export type Skill = {
     id: number
     description: string
-    effectId: number
-    evaluation: number
+    effectId: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 10
+    evaluation: 0 | 1 | 2 | 3 | 4 | 6 | 7
     duration: number
     interval: number
     probability: number
@@ -80,11 +80,11 @@ declare namespace princess {
     name: string
     sortedId: number
     idolId: number
-    idolType: number
+    idolType: 1 | 2 | 3 | 4
     resourceId: string
     rarity: number
     eventId?: number
-    extraType: number
+    extraType: 0 | 2 | 3 | 4 | 5 | 6 | 7
     costume?: Costume
     bonusCostume?: BonusCostume
     flavorText: string
